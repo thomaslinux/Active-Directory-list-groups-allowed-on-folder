@@ -13,3 +13,13 @@ dossier "path/to/folder"
 or
 
 dossier path/to/folder
+
+or
+
+dossier
+
+then paste the path/to/folder
+
+# Bugs
+
+If the path opens in the Windows explorer or is copied from Windows explorer, there should be no issue.
