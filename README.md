@@ -6,7 +6,7 @@ Save the two files in the same folder
 
 open the folder where you saved dossier.bat and dossier.ps1 in CMD
 
-run the command
+from the folder, run the command
 
 dossier "path/to/folder"
 
