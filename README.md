@@ -1,3 +1,7 @@
+# Presentation
+
+A powershell script to list all Active Directory groups allowed to view a folder.
+
 # Installation
 
 Save the two files in the same folder
