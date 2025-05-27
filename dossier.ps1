@@ -8,17 +8,16 @@ $dossier = $dossier.Replace('"', '') # supprime les guillemets de la variables d
 # Récupère les groupes de $dossier, supprime le nom de domaine dans la sortie
 ((Get-Acl -Path $dossier).Access).IdentityReference -replace "^DOMAIN\\", "" | 
 Where-Object { $_ -notmatch "^(BUILTIN\\|AUTORITE NT\\)" } | # cache les groupes de BUILTIN et AUTORITE NT
-Group-Object | 
-Where-Object { $_.Count -eq 2 } | # Sélectionne le groupe valide, c'est celui qui apparaît 2 fois
-Select-Object -ExpandProperty Name | 
-Sort-Object -Descending
+Sort-Object -Descending |
+Select-Object -Last 1
 
 # Créé une liste pour stocker les adresses email
 $emailArray = @()
 
+"Membres de : "
+$groups
 # Pour chaque Objet / utilisateur dans chaque groupe
 $groups | ForEach-Object {
-	"Membres de " + $groups
     Get-ADGroupMember -Identity $_ | 
     ForEach-Object {
         $user = Get-ADUser -Identity $_.SamAccountName -Properties Mail # Ajoute le mail de l'utilisateur dans l'Objet user
